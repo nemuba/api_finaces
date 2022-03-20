@@ -2,27 +2,28 @@
 
 Api to control my personal finances
 
-### Menu
+## Menu
+
 * [Setup](#setup-gems)
 * [Config Initial](#config-initial)
 * [Routes](#routes)
 * [Rspec Test](#rspec-test)
 
-# SETUP GEMS
+## SETUP GEMS
 
-- [Ruby (3.1.0)](https://ruby-doc.org/core-3.1.0)
-- [Rails 7.0.2](https://github.com/rails/rails)
-- [Database Postgres](https://www.postgresql.org/)
-- [ApiGuard](https://github.com/Gokul595/api_guard)
-- [Rails I18n - 7.0.0](https://github.com/svenfuchs/rails-i18n)
-- [Active Model Serializer](https://github.com/rails-api/active_model_serializers)
-- [Rspec Rails](https://github.com/rspec/rspec-rails)
-- [Database cleaner](https://github.com/DatabaseCleaner/database_cleaner)
-- [FactoryBot](https://github.com/thoughtbot/factory_bot_rails)
+* [Ruby (3.1.0)](https://ruby-doc.org/core-3.1.0)
+* [Rails 7.0.2](https://github.com/rails/rails)
+* [Database Postgres](https://www.postgresql.org/)
+* [ApiGuard](https://github.com/Gokul595/api_guard)
+* [Rails I18n - 7.0.0](https://github.com/svenfuchs/rails-i18n)
+* [Active Model Serializer](https://github.com/rails-api/active_model_serializers)
+* [Rspec Rails](https://github.com/rspec/rspec-rails)
+* [Database cleaner](https://github.com/DatabaseCleaner/database_cleaner)
+* [FactoryBot](https://github.com/thoughtbot/factory_bot_rails)
 
-# Config initial
+## Config initial
 
-- configuration your credentials to database connection
+* configuration your credentials to database connection
 
 ```ssh
 EDITOR=nano rails credentials:edit
@@ -40,28 +41,28 @@ pg:
   port: 5432
 ```
 
-- later, run command:
+* later, run command:
 
 ```ssh
 rails db:create db:migrate
 ```
 
-- now we can run our application by running the following command:
+* now we can run our application by running the following command:
 
 ```ssh
 rails server
 ```
 
-# Routes
+## Routes
+
 ### Registration
 
 This will create an user and responds with access token, refresh token and access token expiry in the response header.
 
 Example request:
 
-```
-# URL
-POST "/users/sign_up"
+```json
+# URL POST "/users/sign_up"
 
 # Request body
 {
@@ -100,9 +101,8 @@ or your own logic to authenticate the user in `authenticate` method.
 
 Example request:
 
-```
-# URL
-POST "/users/sign_in"
+```json
+# URL POST "/users/sign_in"
 
 # Request body
 {
@@ -135,9 +135,8 @@ You can use this request to sign out an user. This will blacklist the current ac
 
 Example request:
 
-```
-# URL
-DELETE "/users/sign_out"
+```yaml
+# URL DELETE "/users/sign_out"
 
 # Request header
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDY3MDgwMjAsImlhdCI6MTU0NjcwNjIyMH0.F_JM7fUcKEAq9ZxXMxNb3Os-WeY-tuRYQnKXr_bWo5E
@@ -165,9 +164,8 @@ with both access token and request token (which you got in sign in API) in the r
 
 Example request:
 
-```
-# URL
-POST "/users/tokens"
+```yaml
+# URL POST "/users/tokens"
 
 # Request header
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDY3MDgwMjAsImlhdCI6MTU0NjcwNjIyMH0.F_JM7fUcKEAq9ZxXMxNb3Os-WeY-tuRYQnKXr_bWo5E
@@ -201,9 +199,8 @@ responds with new access token and refresh token.
 
 Example request:
 
-```
-# URL
-PATCH "/users/passwords"
+```yaml
+# URL PATCH "/users/passwords"
 
 # Request header
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDY3MDgwMjAsImlhdCI6MTU0NjcwNjIyMH0.F_JM7fUcKEAq9ZxXMxNb3Os-WeY-tuRYQnKXr_bWo5E
@@ -230,9 +227,8 @@ You can use this request to delete an user. This will delete the user and its as
 
 Example request:
 
-```
-# URL
-DELETE "/users/delete"
+```yaml
+# URL DELETE "/users/delete"
 
 # Request header
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NDY3MDgwMjAsImlhdCI6MTU0NjcwNjIyMH0.F_JM7fUcKEAq9ZxXMxNb3Os-WeY-tuRYQnKXr_bWo5E
@@ -250,11 +246,14 @@ Example response:
 ### Rspec Test
 
 To run all test of application, run the following command:
+
 ```ssh
 rspec
 ```
 
+example return
 
+![rspec teste](/tests.png)
 That's it, any questions get in touch:
 
 **Facebook:** [Alef Oliveira](https://www.facebook.com/AlefOjedaOliveira)
