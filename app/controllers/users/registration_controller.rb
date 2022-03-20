@@ -8,7 +8,7 @@ module Users
     include ValidateParams
     
     before_action :authenticate_resource, only: [:destroy]
-    before_action -> { validate_params(:name, :email, :password, :password_confirmation, presence: true) }
+    before_action -> { validate_params(:name, :email, :password, :password_confirmation, presence: true) }, only: [:create]
 
     def create
       init_resource(sign_up_params)
