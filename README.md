@@ -6,7 +6,7 @@ Api to control my personal finances
 * [Setup](#setup-gems)
 * [Config Initial](#config-initial)
 * [Routes](#routes)
-* [Rspec Test][#rspec-test]
+* [Rspec Test](#rspec-test)
 
 # SETUP GEMS
 
