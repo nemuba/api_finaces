@@ -1,6 +1,14 @@
+# frozen_string_literal: true
+
+# module Users
 module Users
+  # == Users::RegistrationController
   class RegistrationController < ApiGuard::RegistrationController
+    include ExceptionHandler
+    include ValidateParams
+    
     before_action :authenticate_resource, only: [:destroy]
+    before_action -> { validate_params(:name, :email, :password, :password_confirmation, presence: true) }
 
     def create
       init_resource(sign_up_params)
