@@ -15,13 +15,7 @@ module ExceptionHandler
   end
 
   def rescue_error_exception(error)
-    message = if error.respond_to?(:receiver) && error.receiver.key?(:object)
-                error.receiver[:object].errors.full_messages.to_sentence
-              else
-                error.message
-              end
-
-    render_error(message, :unprocessable_entity)
+    render_error(error.message, :unprocessable_entity)
   end
 
   private
