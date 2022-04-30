@@ -10,9 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_21_005127) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_21_033756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "balances", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.float "balance_value", default: 0.0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_balances_on_user_id"
+  end
 
   create_table "blacklisted_tokens", force: :cascade do |t|
     t.string "token"
@@ -42,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_21_005127) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "balances", "users"
   add_foreign_key "blacklisted_tokens", "users"
   add_foreign_key "refresh_tokens", "users"
 end

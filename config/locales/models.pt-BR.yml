@@ -1,12 +1,26 @@
 pt-BR:
   activerecord:
     models:
-      user: 'Usuário'
-    attributes:
       user:
+        one: 'Usuário'
+        other: 'Usuários'
+      balance:
+        one: 'Saldo'
+        other: 'Saldos'
+    attributes:
+      default: &default
+        created_at: Criado em
+        updated_at: Atualizado em
+      user:
+        <<: *default
         name: Nome
         email: E-mail
         password: Senha
         password_confirmation: Confirmação de senha
+        balance: Saldo
         created_at: Criado em
         updated_at: Atualizado em
+      balance:
+        <<: *default
+        user: Usuário
+        balance_value: Valor

@@ -5,7 +5,7 @@ module ExceptionHandler
   extend ActiveSupport::Concern
 
   included do
-    rescue_from ActiveRecord::RecordNotFound, with: :rescue_error_exception
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :rescue_error_exception
     rescue_from ActiveRecord::RecordNotDestroyed, with: :rescue_error_exception
     rescue_from ActiveRecord::StatementInvalid, with: :rescue_error_exception
@@ -16,6 +16,10 @@ module ExceptionHandler
 
   def rescue_error_exception(error)
     render_error(error.message, :unprocessable_entity)
+  end
+
+  def record_not_found(error)
+    render_error(I18n.t('active_record.errors.messages.record_not_found', record: error.model, id: error.id), :not_found)
   end
 
   private

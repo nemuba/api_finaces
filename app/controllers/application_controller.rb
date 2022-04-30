@@ -2,7 +2,4 @@
 
 # class ApplicationController
 class ApplicationController < ActionController::API
-  include ExceptionHandler
-  include ValidateParams
-  include Response
 end

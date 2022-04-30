@@ -12,4 +12,6 @@ class User < ApplicationRecord
 
   api_guard_associations blacklisted_token: 'blacklisted_tokens'
   has_many :blacklisted_tokens, dependent: :delete_all
+
+  has_one :balance
 end
