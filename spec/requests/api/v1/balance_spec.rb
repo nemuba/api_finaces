@@ -27,8 +27,14 @@ RSpec.describe 'Api::V1::Balances', type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it 'with response error' do
+    it 'validate only number positive' do
       params = { balance_value: -200 }
+      post '/api/v1/balances', params: params, headers: headers
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+
+    it 'validate number must be present' do
+      params = { balance_value: nil }
       post '/api/v1/balances', params: params, headers: headers
       expect(response).to have_http_status(:unprocessable_entity)
     end
@@ -41,8 +47,14 @@ RSpec.describe 'Api::V1::Balances', type: :request do
       expect(response).to have_http_status(:success)
     end
 
-    it 'with response error' do
+    it 'validate only number positive' do
       params = { balance_value: -1  }
+      put "/api/v1/balances/#{balance.id}", params: params, headers: headers
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
+
+    it 'validate number must be present' do
+      params = { balance_value: nil }
       put "/api/v1/balances/#{balance.id}", params: params, headers: headers
       expect(response).to have_http_status(:unprocessable_entity)
     end
