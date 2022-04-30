@@ -7,6 +7,7 @@ module Api
     class BalancesController < ApiController
       before_action :authenticate_and_set_user
       before_action :set_balance, only: %I[show update destroy]
+      before_action -> { validate_params(:balance_value) }, only: %I[create update]
 
       def index
         render_json(current_user.balance, status: :ok)
